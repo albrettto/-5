@@ -202,27 +202,34 @@ int main()
     tree2->method();
 
     decor(4);
+    Pear_Tree* pear_tree1 = new Pear_Tree;
+    cout << "\nОпасное приведение типов:\n";
+    if (tree2->isA("Pear_Tree"))
+        pear_tree1 = (Pear_Tree*)tree2;
+    cout << pear_tree1->classname() << endl;
+
+    decor(5);
     cout << "Передача объектов классов Base и Desk в качестве параметров функций:\n\n";
     
     cout << "\tBase:\n";
-    Base base1 = new Base();
+    Base base1;
     func1(base1);
     cout << endl;
     Base* base2 = new Base();
     func2(base2);
     cout << endl;
-    Base base3 = new Base();
+    Base base3;
     func3(base3);
     cout << endl;
 
     cout << "\tDesk:\n";
-    Desk desk1 = new Desk();
+    Desk desk1;
     func1(desk1);
     cout << endl;
     Desk* desk2 = new Desk();
     func2(desk2);
     cout << endl;
-    Desk desk3 = new Desk();
+    Desk desk3;
     func3(desk3);
     cout << endl;
     decor(0);
