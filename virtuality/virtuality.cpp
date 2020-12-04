@@ -118,40 +118,38 @@ public:
     }
 };
 
-//class Cherry_Tree : public Tree {
-//private:
-//    string class_name = "Cherry_Tree";
-//public:
-//    Cherry_Tree() {
-//        fruit = "Cherry";
-//        cout << "Конструктор Cherry_Tree()";
-//    }
-//    Cherry_Tree(string fruit, int age) {
-//        this->fruit = fruit;
-//        cout << "Конструктор Cherry_Tree(string fruit)";
-//    }
-//    Cherry_Tree(Cherry_Tree& wood) {
-//        fruit = wood.fruit;
-//        cout << "Конструктор Cherry_Tree(Tree& wood)";
-//    }
-//    string classname() {
-//        cout << "НеВиртуальный метод classname Cherry_Tree";
-//        return class_name;
-//    }
-//    bool isA(string cn) {
-//        cout << "НеВиртуальный метод isA Cherry_Tree";
-//        if (class_name == cn)
-//            return true;
-//        else
-//            return false;
-//    }
-//    void method() {
-//        cout << "Метод Cherry_Tree";
-//    }
-//    ~Cherry_Tree() {
-//        cout << "Деструктор Cherry_Tree";
-//    }
-//};
+
+class Base {
+public:
+    Base() {
+        cout << "Конструктор Base()\n";
+    }
+    Base(Base* obj) {
+        cout << "Конструктор Base(Base* obj)\n";
+    }
+    Base(Base& obj) {
+        cout << "Конструктор Base(Base& obj)\n";
+    }
+    ~Base() {
+        cout << "Деструктор ~Base()\n";
+    }
+};
+
+class Desk : public Base {
+public:
+    Desk() {
+        cout << "Конструктор Desk()\n";
+    }
+    Desk(Desk* obj) {
+        cout << "Конструктор Desk(Desk* obj)\n";
+    }
+    Desk(Desk& obj) {
+        cout << "Конструктор Desk(Desk& obj)\n";
+    }
+    ~Desk() {
+        cout << "Деструктор ~Desk()\n";
+    }
+};
 
 int main()
 {
@@ -171,5 +169,11 @@ int main()
     cout << tree1->classname() << endl;
     cout << apple_tree->classname() << endl;
     cout << tree2->classname() << endl;
+
+    cout << "\nБезопасное приведение типов (dynamic_cast):\n";
+    Pear_Tree* pear_tree = dynamic_cast<Pear_Tree*>(tree2);
+    cout << pear_tree->classname() << endl;
+    pear_tree->method();
+    tree2->method();
 
 }
